@@ -1,4 +1,6 @@
 import streamlit as st;
+import models.Client as client
+import controllers.ClientController as clientController
 
 st.title("Create Client")
 
@@ -10,6 +12,9 @@ with st.form(key="include_client"):
 
 
 if input_button_submit:
-    st.write(f'Name: {input_name}')
-    st.write(f'Age: {input_age}')
-    st.write(f'Occupation: {input_occupation}')
+    client.name = input_name
+    client.age = input_age
+    client.occupation = input_occupation
+
+    clientController.incluir(client)
+    st.success("Client Successfully Created!")
