@@ -1,6 +1,8 @@
 import services.database as db;
 import utils.query as query;
 import models.Client as client;
+import asyncio
+import aiopg
 
 
 def insert(client):

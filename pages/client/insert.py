@@ -2,8 +2,17 @@ import streamlit as st;
 import models.Client as client
 import controllers.ClientController as clientController
 
+
 def create():
-    st.title("Create Client")
+    update_id = st.experimental_get_query_params()
+    st.experimental_set_query_params()
+    if update_id.get("id") != None:
+        update_id = update_id.get("id")[0]
+        st.title("Edit Client")
+        st.write(update_id)
+    else:
+        st.title("Create Client")
+
     with st.form(key="include_client"):
         input_name = st.text_input(label="Insert your name")
         input_age = st.number_input(label="Insert your age", format="%i", step=1)
